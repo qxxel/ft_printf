@@ -1,0 +1,4 @@
+*.o
+*.d
+ft_printf.a
+main.c
