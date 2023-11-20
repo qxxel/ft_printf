@@ -1,4 +1,7 @@
 *.o
 *.d
-ft_printf.a
+libftprintf.a
+libft/libft.a
+libft/*.o
+libft/*.d
 main.c

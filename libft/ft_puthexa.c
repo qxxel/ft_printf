@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:44:16 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/20 14:22:59 by agerbaud         ###   ########.fr       */
+/*   Created: 2023/07/10 10:51:35 by agerbaud          #+#    #+#             */
+/*   Updated: 2023/11/20 16:30:10 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd, int *nb_char)
+void	ft_puthexa(unsigned int nbr, char *base, int *nb_char)
 {
-	char	c_unsigned;
+	unsigned int	base_len;
 
-	c_unsigned = (unsigned char)c;
-	if (write(fd, &c_unsigned, 1) < 0)
+	base_len = 16;
+	if (nbr >= base_len)
 	{
-		(*nb_char) = -2;
-		return ;
+		ft_puthexa(nbr / base_len, base, nb_char);
+		nbr %= base_len;
 	}
-	(*nb_char)++;
+	if ((*nb_char) >= 0)
+		ft_putchar_fd(base[nbr], 1, nb_char);
 }

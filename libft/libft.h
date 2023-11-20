@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:25:34 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/16 16:45:06 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:53:00 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	ft_putchar_fd(char c, int fd, int *nb_char);
 void	ft_putstr_fd(char *s, int fd, int *nb_char);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd, int *nb_char);
-void	ft_putnbr_base(unsigned long long nbr, char *base, int fd, int *nb_char);
+void	ft_putnbr_unsigned_fd(unsigned int n, int fd, int *nb_char);
+void	ft_puthexa(unsigned int nbr, char *base, int *nb_char);
+void	ft_putpointer(unsigned long long nbr, int *nb_char, int first);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 typedef struct s_list
