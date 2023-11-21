@@ -5,46 +5,82 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/17 13:13:28 by agerbaud          #+#    #+#              #
-#    Updated: 2023/11/20 17:03:13 by agerbaud         ###   ########.fr        #
+#    Created: 2023/11/07 12:34:17 by agerbaud          #+#    #+#              #
+#    Updated: 2023/11/21 13:45:02 by agerbaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-INCLUDE = ft_printf.h
-LIB_D = libft/
-LIB_I = libft.a
-LIB_A = $(LIB_D)$(LIB_I)
+SRCS =	ft_isalpha.c			\
+		ft_isdigit.c			\
+		ft_isalnum.c			\
+		ft_isascii.c			\
+		ft_isprint.c			\
+		ft_strlen.c				\
+		ft_memset.c				\
+		ft_bzero.c				\
+		ft_memcpy.c				\
+		ft_memmove.c			\
+		ft_strlcpy.c			\
+		ft_strlcat.c			\
+		ft_toupper.c			\
+		ft_tolower.c			\
+		ft_strchr.c				\
+		ft_strrchr.c			\
+		ft_strncmp.c			\
+		ft_memchr.c				\
+		ft_memcmp.c				\
+		ft_strnstr.c			\
+		ft_atoi.c				\
+		ft_calloc.c				\
+		ft_strdup.c				\
+		ft_substr.c				\
+		ft_strjoin.c			\
+		ft_strtrim.c			\
+		ft_split.c				\
+		ft_itoa.c				\
+		ft_strmapi.c			\
+		ft_striteri.c			\
+		ft_putchar_fd.c			\
+		ft_putstr_fd.c			\
+		ft_putendl_fd.c			\
+		ft_putnbr_fd.c			\
+		ft_putnbr_unsigned_fd.c	\
+		ft_putpointer.c			\
+		ft_puthexa.c			\
+		ft_lstnew_bonus.c		\
+		ft_lstadd_front_bonus.c	\
+		ft_lstsize_bonus.c		\
+		ft_lstlast_bonus.c		\
+		ft_lstadd_back_bonus.c	\
+		ft_lstdelone_bonus.c	\
+		ft_lstclear_bonus.c		\
+		ft_lstiter_bonus.c		\
+		ft_lstmap_bonus.c		\
+		ft_printf/ft_printf.c
 
-SRC =	ft_printf.c
 
-CC = cc -Wall -Wextra -Werror -MMDt 210 h
-AR = ar -crs
-OBJS = $(SRC:.c=.o)
-DEP = $(SRC:.c=.d)
+CC = cc -Wall -Wextra -Werror -MMD
 
-all : $(NAME)
+OBJECTS = $(SRCS:.c=.o)
+DEPENDANCIES = $(SRCS:.c=.d)
 
 
-$(NAME): $(LIB_A) $(OBJS)
-	cp $(LIB_A) $@
-	$(AR) $@ $<
+all: $(NAME)
 
--include $(DEP)
+$(NAME): $(OBJECTS)
+	$(AR) -crs $@ $^
 
-$(LIB_A): $(LIB_D)
-	$(MAKE) -C $(LIB_D)
+-include $(DEPENDANCIES)
 
 %.o: %.c
-	$(CC) -include $(INCLUDE) -c $<
+	$(CC) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJS) $(DEP)
-	$(MAKE) clean -C $(LIB_D)
+	$(RM) $(OBJECTS) $(DEPENDANCIES)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(LIB_A)
 
 re: fclean all
 

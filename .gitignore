@@ -1,7 +1,5 @@
 *.o
 *.d
 libftprintf.a
-libft/libft.a
-libft/*.o
-libft/*.d
-main.c
+ft_printf/*.o
+ft_printf/*.d
