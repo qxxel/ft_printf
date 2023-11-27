@@ -6,7 +6,7 @@
 /*   By: agerbaud <agerbaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:20:09 by agerbaud          #+#    #+#             */
-/*   Updated: 2023/11/20 16:28:57 by agerbaud         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:17:29 by agerbaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 void	ft_putnbr_fd(int n, int fd, int *nb_char)
 {
 	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		nb_char += 11;
-	}
+		ft_putstr_fd("-2147483648", fd, nb_char);
 	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd, nb_char);
-		(*nb_char)++;
 		n = -n;
 	}
 	if (n > 9)
