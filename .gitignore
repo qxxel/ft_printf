@@ -1,5 +1,4 @@
 *.o
 *.d
 libftprintf.a
-ft_printf/*.o
-ft_printf/*.d
+.build
